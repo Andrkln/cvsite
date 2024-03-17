@@ -49,7 +49,7 @@ const Header = () => {
       backgroundColor="#18181b"
       zIndex="10"
     >
-      <Box color="white" maxWidth="1280px" m="0 auto" px={16} py={10}
+      <Box color="white" maxWidth="100%" m="0 auto" px={16} py={10}
         >
         <HStack justifyContent="space-between" 
         >
@@ -72,7 +72,8 @@ const Header = () => {
           <nav>
             <HStack spacing={25}>
               <a 
-                href="#projects" onClick={handleClick("projects")} className="section-links"> 
+                href="#projects" onClick={handleClick("projects")} className="section-links"
+                > 
                   My Projects 
               </a> 
               <a 

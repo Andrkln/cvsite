@@ -41,8 +41,14 @@ const ProjectsSection = () => {
       </Heading>
       <Box
         display="grid"
+        gap="20px"
         gridTemplateColumns="repeat(2,minmax(0,1fr))"
-        gridGap={8}
+        justifyItems={'space-around'}
+        sx={{
+          '@media (max-width: 768px)': {
+            gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+          },
+        }}
       >
       {projects.map((project, index) => (
           <Card key={index}>

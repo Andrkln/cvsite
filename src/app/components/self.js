@@ -70,7 +70,7 @@ const selfCss = css`
         animation: ${changeAnimation} 61.5s infinite linear 60s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        width: 20vw;
+        width: 35ch;
         height:  35vh;
     }
 

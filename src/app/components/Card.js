@@ -5,7 +5,6 @@ import React from "react";
 const Card = ({ title, children }) => {
   return (
     <Box
-      p={6}
       sx={{
         display: "flex",
         position: "relative",
@@ -13,7 +12,7 @@ const Card = ({ title, children }) => {
         borderRadius: "10px",
         overflow: "hidden",
         padding: "5rem",
-        alignItems: "center",
+        alignItems: "",
         ':before': {
           content: '""', // Note: Empty strings for content must be double quoted
           position: "absolute",
@@ -42,8 +41,9 @@ const Card = ({ title, children }) => {
         }
       }}
     >
-      <VStack spacing={4}>
-        <Heading fontSize="xl" fontWeight="bold" colour='black'>
+      <VStack>
+        <Heading fontSize="xl" fontWeight="bold" colour='black'
+        >
           {title}
           {children}
         </Heading>

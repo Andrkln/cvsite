@@ -58,13 +58,13 @@ const listColor = '#6a6af5'
      py={16} 
      spacing={8} 
    > 
-     <VStack w="1024px" p={32} alignItems="flex-start"> 
-       <Heading as="h1" id="contactme-section" 
-       color='white'
+     <VStack w="90vw" p={32} > 
+       <Heading as="h1" id="contactme-section"
+       color='white' w="45vw" align='center'
        > 
          Contact me 
        </Heading> 
-       <Box p={6} rounded="md" w="100%"> 
+       <Box p={6} rounded="md" w="70vw"> 
          <form onSubmit={formik.handleSubmit}> 
            <VStack spacing={4}> 
              <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}> 

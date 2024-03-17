@@ -31,7 +31,8 @@ const Styles = ({ color, width, height, font, transform }) => ({
   });
 
 const CubeFace = ({ color, width, height, font, transform, text, TypeText, imageUrl, speed, textColour }) => (
-    <Box sx={Styles({ color, width, height, font, transform })}>
+    <Box sx={Styles({ color, width, height, font, transform,  })}
+    >
       <VStack>
         {imageUrl && <Image src={imageUrl} alt="Cube Face"
            className='CubeImage'
