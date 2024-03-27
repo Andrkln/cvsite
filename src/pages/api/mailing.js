@@ -1,4 +1,4 @@
-import { sendEmailToCustomer } from "@/app/hooks/mail";
+import sendEmailToCustomer from "@/app/hooks/mail";
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {

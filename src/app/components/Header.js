@@ -14,12 +14,12 @@ const socials = [
   },
   {
     icon: faGithub,
-    url: "https://github.com",
+    url: "https://github.com/Andrkln",
     colour: 'rgb(4,170, 109)'
   },
   {
     icon: faLinkedin,
-    url: "https://www.linkedin.com",
+    url: "https://www.linkedin.com/in/andrey-kalinichenko/",
     colour: '#0957ff'
   },
 ];
