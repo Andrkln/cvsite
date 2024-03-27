@@ -1,10 +1,10 @@
 'use client'
-
 import * as React from "react";
 import { VStack } from "@chakra-ui/react";
 
 
 const FullScreenSection = ({ children, flexGrow, ...boxProps }) => {
+
   return (
     <VStack
       backgroundColor={boxProps.backgroundColor}

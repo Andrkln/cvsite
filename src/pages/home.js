@@ -4,6 +4,7 @@ import ProjectsSection from "@/app/components/ProjectsSection";
 import ContactMeSection from "@/app/components/ContactMeSection";
 import { AlertProvider } from "@/app/context/alertContext.client";
 import Alert from "@/app/components/Alert.client";
+import ChatPlace from "@/app/components/chatWindow";
   
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
           <LandingSection />
           <ProjectsSection />
           <ContactMeSection />
+          <ChatPlace />
           <Alert />
         </main>
       </AlertProvider>

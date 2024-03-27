@@ -18,6 +18,11 @@ body {
   height: 95%;
 }
 
+
+.chat {
+  transition: "opacity 3s ease-in-out",
+}
+
 .section-links {
   padding-left: 5px;
   padding-right: 5px;
@@ -48,6 +53,10 @@ body {
   transform: scaleX(1);
 }
 
+.Cube  {
+  margin-top: 20px;
+}
+
 @keyframes rotate {
   100% {
     transform: rotate(1turn);
@@ -55,6 +64,15 @@ body {
 }
 
 @media only screen and (max-width: 900px) {
+
+  .bx {
+    width: 80vw;
+  }
+
+  .Cube  {
+    margin-top: 40px;
+    margin-left: -3ch;
+  }
   
   .projects {
     display: flex;

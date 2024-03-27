@@ -51,7 +51,7 @@ const ProjectsSection = () => {
         }}
       >
       {projects.map((project, index) => (
-          <Card key={index}>
+          <Card key={index}> 
             <project.Cube />
           </Card>
         ))}

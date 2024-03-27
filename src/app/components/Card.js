@@ -2,10 +2,13 @@
 import { Heading, VStack, Box } from "@chakra-ui/react";
 import React from "react";
 
+
+
 const Card = ({ title, children }) => {
   return (
     <Box
       sx={{
+        height: '500px',
         display: "flex",
         position: "relative",
         zIndex: 0,
@@ -14,7 +17,7 @@ const Card = ({ title, children }) => {
         padding: "5rem",
         alignItems: "",
         ':before': {
-          content: '""', // Note: Empty strings for content must be double quoted
+          content: '""', 
           position: "absolute",
           zIndex: -2,
           left: "-50%",
@@ -29,13 +32,13 @@ const Card = ({ title, children }) => {
           animation: "rotate 4s linear infinite",
         },
         ':after': {
-          content: '""', // Double quoted
+          content: '""', 
           position: "absolute",
           zIndex: -1,
           left: "6px",
           top: "6px",
-          width: "calc(100% - 12px)",
-          height: "calc(100% - 12px)",
+          width: "calc(100% - 10px)",
+          height: "calc(100% - 10px)",
           background: "white",
           borderRadius: "5px",
         }

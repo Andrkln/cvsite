@@ -4,7 +4,7 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import React from 'react';
-import TypingEffect from "./TypeEffect.client";
+import TypingEffect from "../hooks/TypeEffect.client";
 import Image from 'next/image';
 
 
