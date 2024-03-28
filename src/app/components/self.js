@@ -11,20 +11,49 @@ import Image from 'next/image';
 
 
 const cornerAnimation = keyframes`
-
+    0% {
+        border-top-left-radius: 1% 50%;
+    }
+    12.5% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+    25% {
+        border-top-right-radius: 1% 50%;
+    }
+    25.001% {
+        border-top-right-radius: 50% 1%;
+    }
+    37.5% {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    50% {
+        border-bottom-right-radius: 50% 1%;
+    }
+    50.001% {
+        border-bottom-right-radius: 1% 50%;
+    }
+    62.5% {
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+    75% {
+        border-bottom-left-radius: 1% 50%;
+    }
+    75.001% {
+        border-bottom-left-radius: 50% 1%;
+    }
+    87.5% {
+        border-bottom-left-radius: 50%;
+        border-top-left-radius: 50%;
+    }
+    100% {
+        border-top-left-radius: 50% 1%;
+    }
 `;
 
-const changeAnimation = keyframes`
-
-`
-
 const selfCss = css`
-    .foo0 {
-        animation: ${changeAnimation} 1.5s infinite linear 1s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-    }
-
     .foo1 {
         content:'';
         position: static;
