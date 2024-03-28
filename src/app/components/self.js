@@ -155,7 +155,9 @@ const Self = ({ title, description, imageSrc }) => {
             {divf}  
         </div>
         </AnimatedBox>
-          <VStack spacing={3}>
+          <VStack spacing={3}
+          w={80}
+          >
                 <Text fontSize="2.8vh" fontWeight="bold">
                     {title}
                 </Text>
