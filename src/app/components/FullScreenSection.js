@@ -10,7 +10,7 @@ const FullScreenSection = ({ children, flexGrow, ...boxProps }) => {
       backgroundColor={boxProps.backgroundColor}
       flexGrow={flexGrow}
     >
-      <VStack maxWidth="100vw" minHeight="100vh"
+      <VStack maxWidth="100vw" minHeight="100vh" 
       {...boxProps} 
       flexGrow={flexGrow}>
         {children}

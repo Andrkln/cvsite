@@ -161,7 +161,8 @@ const Self = ({ title, description, imageSrc }) => {
                 <Text fontSize="2.8vh" fontWeight="bold">
                     {title}
                 </Text>
-                <Text fontSize="2vh" fontWeight="bold" 
+                <Text fontSize="2vh" fontWeight="bold"
+                h={20}
                sx={{
                         background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,215,1) 35%, rgba(0,212,255,1) 100%)',
                         WebkitBackgroundClip: 'text',
