@@ -1,6 +1,6 @@
 
 'use client'
-import { Box, Text, VStack } from "@chakra-ui/react";
+import { Box, Text, VStack  } from "@chakra-ui/react";
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import React from 'react';
@@ -55,13 +55,11 @@ const cornerAnimation = keyframes`
 
 const changeAnimation = keyframes`
     0%, 2.44% {
-        width: 21vw;
-        height:  37vh;
+        width: 101%;
     }
 
     2.45%, 100% {
-        width: 20vw;
-        height:  35vh;
+        width: 100%;
     }
 `
 
@@ -70,15 +68,13 @@ const selfCss = css`
         animation: ${changeAnimation} 61.5s infinite linear 60s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        width: 35ch;
-        height:  35vh;
     }
 
     .foo1 {
         content:'';
         position: static;
-        width: 90%;
-        height:  90%;
+        width: 32ch;
+        height:  32ch;
         z-index: 2;
         background-color:lightseagreen;
         animation: ${cornerAnimation} 3.1s;
@@ -94,8 +90,6 @@ const selfCss = css`
     .foo2 {
         content:'';
         position: static;
-        width: 90%;
-        height:  90%;
         z-index: 2;
         background-color:blue;
         animation: ${cornerAnimation} 3.2s;
@@ -110,8 +104,6 @@ const selfCss = css`
     .foo3 {
         content:'';
         position: static;
-        width: 90%;
-        height:  90%;
         z-index: 2;
         background-color:red;
         animation: ${cornerAnimation} 3.3s;
@@ -134,9 +126,18 @@ const AnimatedBox = styled(Box)`
 
 const Self = ({ title, description, imageSrc }) => {
     const divf = 
-    <div className='foo1' id="foo1">
-        <div className='foo2' id="foo2">
-            <div className='foo3' id="foo3">
+    <Box className='foo1' id="foo1"
+    w={10}
+    h={10}
+    >
+        <Box className='foo2' id="foo2"
+        w={'90%'}
+        h={'90%'}
+        >
+            <Box className='foo3' id="foo3"
+                w={'90%'}
+                h={'90%'}
+            >
                 <Image  
                     src={imageSrc} 
                     alt={title}
@@ -144,9 +145,9 @@ const Self = ({ title, description, imageSrc }) => {
                     height={210}
                     className='imageClass'                    
                 />
-            </div>
-        </div>
-    </div>
+            </Box>
+        </Box>
+    </Box>
     return (
     <VStack spacing={4} className="me-slot">
         <AnimatedBox
