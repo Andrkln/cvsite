@@ -55,17 +55,17 @@ const cornerAnimation = keyframes`
 
 const changeAnimation = keyframes`
     0%, 2.44% {
-        width: 101%;
+        height: 99%;
     }
 
     2.45%, 100% {
-        width: 100%;
+        height: 100%;
     }
 `
 
 const selfCss = css`
     .foo0 {
-        animation: ${changeAnimation} 61.5s infinite linear 60s;
+        animation: ${changeAnimation} 1.5s infinite linear 1s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
     }
@@ -149,12 +149,18 @@ const Self = ({ title, description, imageSrc }) => {
         </Box>
     </Box>
     return (
-    <VStack spacing={4} className="me-slot">
-        <AnimatedBox
-        ><div className='foo0'>
-            {divf}  
-        </div>
-        </AnimatedBox>
+    <VStack spacing={4} className="me-slot"
+    >
+        <Box
+        w={'34ch'}
+        height={'35ch'}
+        >
+            <AnimatedBox
+            ><div className='foo0'>
+                {divf}  
+            </div>
+            </AnimatedBox>
+        </Box>
           <VStack spacing={3}
           w={80}
           >

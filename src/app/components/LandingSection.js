@@ -14,7 +14,9 @@ const LandingSection = () => (
     backgroundColor="rgb(252, 223, 94)"
     flexGrow='2'
   >
-      <Heading as='h1' size='4xl'>
+      <Heading as='h1' size='4xl'
+      mb={7}
+      >
             Web Developer
       </Heading>
       <Self 
