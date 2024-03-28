@@ -12,6 +12,7 @@ const useChating = () => {
         setError(null);
 
         try {
+            console.log('2')
             const fetchResponse = await fetch('/api/chating', {
                 method: 'POST',
                 body: JSON.stringify(ChatData),
