@@ -8,7 +8,8 @@ export default async function handlerChat(req, res) {
 
   if (req.method === 'POST') {
       try {
-          const fetchResponse = await fetch('http://127.0.0.1:8000/api/chat/', {
+          const fetchResponse = await fetch('http://3.92.217.119:8000/api/chat/', 
+          {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
