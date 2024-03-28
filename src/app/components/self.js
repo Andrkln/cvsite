@@ -1,6 +1,6 @@
 
 'use client'
-import { Box, Text, VStack  } from "@chakra-ui/react";
+import { Box, Text, VStack } from "@chakra-ui/react";
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import React from 'react';
@@ -53,12 +53,32 @@ const cornerAnimation = keyframes`
     }
 `;
 
+const changeAnimation = keyframes`
+    0%, 2.44% {
+        width: 35ch;
+        height:  35vh;
+    }
+
+    2.45%, 100% {
+        width: 36ch;
+        height:  36vh;
+    }
+`
+
 const selfCss = css`
+    .foo0 {
+        animation: ${changeAnimation} 20s infinite linear 15s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        width: 36ch;
+        height:  36vh;
+    }
+
     .foo1 {
         content:'';
         position: static;
-        width: 32ch;
-        height:  32ch;
+        width: 90%;
+        height:  90%;
         z-index: 2;
         background-color:lightseagreen;
         animation: ${cornerAnimation} 3.1s;
@@ -74,6 +94,8 @@ const selfCss = css`
     .foo2 {
         content:'';
         position: static;
+        width: 90%;
+        height:  90%;
         z-index: 2;
         background-color:blue;
         animation: ${cornerAnimation} 3.2s;
@@ -88,6 +110,8 @@ const selfCss = css`
     .foo3 {
         content:'';
         position: static;
+        width: 90%;
+        height:  90%;
         z-index: 2;
         background-color:red;
         animation: ${cornerAnimation} 3.3s;
@@ -111,8 +135,6 @@ const AnimatedBox = styled(Box)`
 const Self = ({ title, description, imageSrc }) => {
     const divf = 
     <Box className='foo1' id="foo1"
-    w={10}
-    h={10}
     >
         <Box className='foo2' id="foo2"
         w={'90%'}

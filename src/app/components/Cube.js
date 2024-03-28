@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text, HStack, VStack } from '@chakra-ui/react';
-import TypingEffect from '../hooks/TypeEffect.client';
+import TypingEffect from "../hooks/TypeEffect.client";
 import { keyframes } from "@emotion/react";
 import Image from 'next/image';
 
