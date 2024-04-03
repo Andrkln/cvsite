@@ -3,28 +3,27 @@ import React, { useState, useEffect } from "react";
 import useChating from "../hooks/useChat";
 import { Box, Button, Textarea, VStack, Slide } from "@chakra-ui/react";
 import useismobile from "../hooks/isMobile";
+import SimpleTypingEffect from "../hooks/simpleTypeEffect.client";
 
 const ChatPlace = () => {
-    const { isLoading, response, error, submit } = useChating();
+    const { isLoading, response, error, chat_id ,submit } = useChating();
     const [message, setMessage] = useState("");
-    const [chat_id, setChat_id] = useState(null);
     const [responses, setResponses] = useState([]);
     const [showChatWindow, setShowChatWindow] = useState(false);
     const ismobile = useismobile();
     const pd = ismobile ? `3%` : `0.5%`;
-
+    
     const toggleChatWindow = () => setShowChatWindow(!showChatWindow);
-
     useEffect(() => {
         if (chat_id === null && response?.chat_id) {
             setChat_id(response.chat_id);
         }
-        if (response?.latest_response) {
-            setResponses(prevResponses => (
-                prevResponses.includes(response.latest_response) ? prevResponses : [...prevResponses, response.latest_response]
-            ));
-        }
-    }, [response, chat_id]);
+        setResponses(prevResponses => (
+            prevResponses.includes(response) ? prevResponses : [...prevResponses, response]
+        ));
+    },
+    [response]
+    );
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -50,9 +49,6 @@ const ChatPlace = () => {
             height:'48ch',
             padding: pd,
             position:'fixed'
-
-        
-        
                 }}
         >
             {showChatWindow && (
@@ -71,20 +67,22 @@ const ChatPlace = () => {
                     <Box h="120px" overflowY="auto"
                       spacing={5}
                     >
-                      {responses.map((resp, index) => (
-                        <Box
-                          backgroundColor="white"
-                          borderRadius="5px"
-                          borderStyle="solid"
-                          borderWidth="1px"
-                          borderColor="gray.200"
-                          key={index}
-                          w={'20ch'}
-                          mb={5}
-                        >
-                          {resp}
-                        </Box>
-                      ))}
+                      {
+                        responses.length > 1 && responses.slice(1).map((resp, index) => (
+                            <Box
+                            backgroundColor="white"
+                            borderRadius="5px"
+                            borderStyle="solid"
+                            borderWidth="1px"
+                            borderColor="gray.200"
+                            key={index}
+                            w={'20ch'}
+                            mb={5}
+                            >
+                                {resp}
+                            </Box>
+                        ))
+                    }
                     </Box>
                     <Textarea
                       maxWidth={60}

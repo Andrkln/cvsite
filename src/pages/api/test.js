@@ -1,35 +1,24 @@
-let bd = {
-    chat_id: null,
-    message: "hi",
-    rest_key: 'TheWebsitekey42023456'
-};
+const fetchResponse =  fetch('/api/chating', {
+    method: 'POST',
+    body: JSON.stringify(ChatData),
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    },
+});
 
-async function sendRequest() {
-    try {
-        const response = await fetch('http://3.92.217.119:8000/api/chat/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(bd)
-        });
-
-        if (response.ok) {
-            try {
-                const data = await response.json(); // Attempt to parse JSON
-                console.log(data);
-            } catch (parseError) {
-                console.error('Failed to parse JSON:', parseError);
-                const text = await response.text(); // Fallback to text if JSON parsing fails
-                console.log(text);
-            }
-        } else {
-            console.error('Server responded with a non-OK status:', response.status);
-        }
-    } catch (error) {
-        console.error('Network request failed', error);
-    }
+if (!fetchResponse.ok) {
+    throw new Error('Failed to get response from the server');
 }
 
+const reader = fetchResponse.body.getReader();
+const decoder = new TextDecoder();
+let receivedData = '';
 
-sendRequest()
+while (true) {
+    const { done, value } = await reader.read();
+    console.log('value' +  value)
+    if (done) break;
+    receivedData += decoder.decode(value, {stream: true});
+    console.log('receivedData'+ receivedData)
+}

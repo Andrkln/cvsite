@@ -55,13 +55,13 @@ const cornerAnimation = keyframes`
 
 const changeAnimation = keyframes`
     0%, 2.44% {
-        width: 35ch;
-        height:  35vh;
+        width: 37ch;
+        height:  37vh;
     }
 
     2.45%, 100% {
-        width: 36ch;
-        height:  36vh;
+        width: 38ch;
+        height:  38ch;
     }
 `
 
@@ -70,8 +70,8 @@ const selfCss = css`
         animation: ${changeAnimation} 20s infinite linear 15s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        width: 36ch;
-        height:  36vh;
+        width: 38ch;
+        height:  38ch;
     }
 
     .foo1 {
@@ -158,8 +158,8 @@ const Self = ({ title, description, imageSrc }) => {
     <VStack spacing={4} className="me-slot"
     >
         <Box
-        w={'34ch'}
-        height={'35ch'}
+        w={'35ch'}
+        height={'40ch'}
         >
             <AnimatedBox
             ><div className='foo0'>
@@ -181,7 +181,7 @@ const Self = ({ title, description, imageSrc }) => {
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text', 
                     }}
-                >       Shortly about Me:
+                >       Shortly about Me: 
                     <TypingEffect text={` ${description}`} speed={90} />
                 </Text>
           </VStack>
