@@ -46,6 +46,7 @@ export default async function handlerChat(req, res) {
 
                 await stream.pipeTo(new WritableStream({
                     write(chunk) {
+                        /*if add console.log(chunk) they appear in real time, but after this place only as a whole*/
                         res.write(chunk);
                     },
                     close() {
