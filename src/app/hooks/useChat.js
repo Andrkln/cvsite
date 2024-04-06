@@ -28,32 +28,17 @@ const useChating = () => {
 
             const reader = fetchResponse.body.getReader();
             const decoder = new TextDecoder();
-            let receivedData = '';
 
+            // Read and log each chunk as it arrives
             while (true) {
                 const { done, value } = await reader.read();
-                if (done) break;
-                receivedData += decoder.decode(value, {stream: true});
-
-
-                const lines = receivedData.split('\n');
-                for (let i = 0; i < lines.length - 1; i++) {
-                    try {
-                        const line = lines[i];
-                        const json = JSON.parse(line);
-                        if (json.chat_id) {
-                            setChat_id(json.chat_id);
-                        } else if (json.message) {
-                            setResponse(prev => [...prev, json.message]);
+                if (done) break; 
+                
+                // Decode the current chunk
+                const chunk = decoder.decode(value);
+                console.log(chunk);
             }
-                    } catch (error) {
-                        console.error('Error parsing JSON:', error);
-                        setError('Failed to parse response data.');
-                        break;
-                    }
-                }
-                receivedData = lines[lines.length - 1];
-            }
+
         } catch (fetchError) {
             console.error('Error during fetch:', fetchError);
             setError(fetchError.toString());
