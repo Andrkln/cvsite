@@ -15,20 +15,16 @@ const ChatPlace = () => {
     
     const toggleChatWindow = () => setShowChatWindow(!showChatWindow);
     useEffect(() => {
-      // Safeguard against undefined response
       if (response && Object.keys(response).length > 0) {
           const [id, message] = Object.entries(response)[0];
-          // Assuming id is not null and message is not null based on your logic
           if (id != null && message != null) {
               setResponses(prevResponses => {
-                  // If the ID already exists, concatenate the new message
                   if (prevResponses[id]) {
                       return {
                           ...prevResponses,
                           [id]: prevResponses[id] + message,
                       };
                   } else {
-                      // If the ID does not exist, add the new ID and its message
                       return {
                           ...prevResponses,
                           [id]: message,
