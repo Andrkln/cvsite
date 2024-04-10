@@ -3,13 +3,12 @@ import { useState } from 'react';
 
 const useChating = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [response, setResponse] = useState('');
+    const [response, setResponses] = useState({});
     const [error, setError] = useState(null);
-    const [chat_id, setChat_id] = useState(null);
+    const [chatId, setChatId] = useState(null);
 
     const submitChat = async (ChatData) => {
         setIsLoading(true);
-        setResponse('');
         setError(null);
 
         try {
@@ -29,14 +28,36 @@ const useChating = () => {
             const reader = fetchResponse.body.getReader();
             const decoder = new TextDecoder();
 
-            // Read and log each chunk as it arrives
             while (true) {
                 const { done, value } = await reader.read();
-                if (done) break; 
+                if (done) break;
                 
-                // Decode the current chunk
-                const chunk = decoder.decode(value);
-                console.log(chunk);
+                const preChunkStr = decoder.decode(value);
+                const preChunks = preChunkStr.split('\n');
+                let sentence = ''
+                
+                for (let preChunk of preChunks) {
+                    if (!preChunk.trim()) continue;
+
+                    try {
+                        const chunk = JSON.parse(preChunk);
+                        if (chunk.chat_id) {
+                            setChatId(chunk.chat_id);
+                        }
+                        if (chunk.id && chunk.message) {
+                            sentence += chunk.message
+
+                            setResponses(
+                                {
+                                    [chunk.id]: sentence
+                                }
+                              );
+                        }
+                        
+                    } catch (error) {
+                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
+                    }
+                }
             }
 
         } catch (fetchError) {
@@ -47,7 +68,7 @@ const useChating = () => {
         }
     };
 
-    return { isLoading, response, error, chat_id, submit: submitChat };
+    return { isLoading, response, error, chatId, submit: submitChat };
 };
 
 export default useChating;

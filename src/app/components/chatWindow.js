@@ -8,22 +8,38 @@ import SimpleTypingEffect from "../hooks/simpleTypeEffect.client";
 const ChatPlace = () => {
     const { isLoading, response, error, chat_id ,submit } = useChating();
     const [message, setMessage] = useState("");
-    const [responses, setResponses] = useState([]);
+    const [responses, setResponses] = useState({});
     const [showChatWindow, setShowChatWindow] = useState(false);
     const ismobile = useismobile();
     const pd = ismobile ? `3%` : `0.5%`;
     
     const toggleChatWindow = () => setShowChatWindow(!showChatWindow);
     useEffect(() => {
-        if (chat_id === null && response?.chat_id) {
-            setChat_id(response.chat_id);
-        }
-        setResponses(prevResponses => (
-            prevResponses.includes(response) ? prevResponses : [...prevResponses, response]
-        ));
-    },
-    [response]
-    );
+      // Safeguard against undefined response
+      if (response && Object.keys(response).length > 0) {
+          const [id, message] = Object.entries(response)[0];
+          // Assuming id is not null and message is not null based on your logic
+          if (id != null && message != null) {
+              setResponses(prevResponses => {
+                  // If the ID already exists, concatenate the new message
+                  if (prevResponses[id]) {
+                      return {
+                          ...prevResponses,
+                          [id]: prevResponses[id] + message,
+                      };
+                  } else {
+                      // If the ID does not exist, add the new ID and its message
+                      return {
+                          ...prevResponses,
+                          [id]: message,
+                      };
+                  }
+              });
+          }
+      }
+  }, [response]);
+
+  
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -68,25 +84,29 @@ const ChatPlace = () => {
                       spacing={5}
                     >
                       {
-                        responses.length > 1 && responses.slice(1).map((resp, index) => (
-                            <Box
-                            backgroundColor="white"
-                            borderRadius="5px"
-                            borderStyle="solid"
-                            borderWidth="1px"
-                            borderColor="gray.200"
-                            key={index}
-                            w={'20ch'}
-                            mb={5}
-                            >
-                                {resp}
-                            </Box>
-                        ))
-                    }
+                  Object.entries(responses).map(([id, response], index) => (
+                      <Box
+                        backgroundColor="white"
+                        borderRadius="5px"
+                        borderStyle="solid"
+                        borderWidth="1px"
+                        borderColor="gray.200"
+                        key={id} 
+                        w={'20ch'}
+                        mb={5}
+                        minHeight={'20px'}
+                      > <SimpleTypingEffect 
+                        text={response}
+                        speed={80}
+                      
+                      />
+                      </Box>
+                    ))
+                  }
                     </Box>
                     <Textarea
                       maxWidth={60}
-                      placeholder="Type your message here..."
+                      placeholder="Ask anything about Andrey or this website..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       disabled={isLoading}
