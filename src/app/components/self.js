@@ -150,7 +150,8 @@ const Self = ({ title, description, imageSrc }) => {
                     alt={title}
                     width={210}
                     height={210}
-                    className='imageClass'                    
+                    className='imageClass'
+                    priority                    
                 />
             </Box>
         </Box>

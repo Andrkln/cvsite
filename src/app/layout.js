@@ -26,10 +26,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
         <Head>
         <title>{metadata.title}</title>
-        <meta name="og:description" content={metadata.description} />
+        <meta property='og:description' content={metadata.description} key="desc"/>
         <meta charSet="UTF-8" />
         <meta name="viewport" content={metadata.content} />
-        <meta property="og:image" content={metadata.image} />
+        <meta property='og:image' content={metadata.image} />
         <meta property='og:image:width' content='600' />
         <meta property='og:image:height' content='600' />
         <meta property='og:image:type' content='image/jng' />
