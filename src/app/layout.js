@@ -13,27 +13,26 @@ const aleo = Aleo({
 
 export const metadata = {
   title: "My CV",
-  description: "cv of Andrey Kalinichenko",
-  name: "viewport",
-  content: "width=device-width, initial-scale=1.0"
+  description: "Here you can find all info about me or ask AI about it",
+  content: "width=device-width, initial-scale=1.0",
+  image: "https://cvsite-pi.vercel.app/_next/image?url=%2Fimages%2Fmy_photo.jpg&w=256&q=75"
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-        <Head>
-          <title>{metadata.title}</title>
-          <meta name="description" content={metadata.description} />
-          <meta charset="UTF-8"/>
-          <meta name="viewport" content={metadata.content}/>
-       </Head>
-      <body className={aleo.className}>
-        <Header/>
-          {children}
-        <Footer/>
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content={metadata.content} />
+        <meta property="og:image" content={metadata.image} />
+      </Head>
+      <body>
+        <Header />
+        {children}
+        <Footer />
       </body>
-    </html>
+    </>
   );
 }

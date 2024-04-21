@@ -214,7 +214,7 @@ const cubeFaces = [
     textColour: `rgb(11, 13, 121)`, 
     speed: 50 },
     { color: `pink`,width: width, height: width, font: `16px`, transform: `rotateY(180deg) translateZ(${z})`, 
-    text: `Communicate an30with department of the company`, 
+    text: `Communicate with any department of the company`, 
     TypeText:`Within one simple chat`,
     imageUrl: img21,
     textColour: `rgb(255, 66, 214)`, 

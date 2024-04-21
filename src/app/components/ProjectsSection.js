@@ -39,22 +39,26 @@ const ProjectsSection = () => {
       <Heading as="h1" id="projects-section" color="black">
         Previous Projects
       </Heading>
-      <Box
-        display="grid"
-        gap="20px"
-        gridTemplateColumns="repeat(2,minmax(0,1fr))"
-        justifyItems={'space-around'}
-        sx={{
-          '@media (max-width: 768px)': {
-            gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
-          },
-        }}
-      >
-      {projects.map((project, index) => (
-          <Card key={index}> 
-            <project.Cube />
-          </Card>
-        ))}
+      <Box>
+
+        <Box
+          display="grid"
+          gap="20px"
+          gridTemplateColumns="repeat(2,minmax(0,1fr))"
+          justifyItems={'space-around'}
+          sx={{
+            '@media (max-width: 768px)': {
+              gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+            },
+          }}
+        >
+        {projects.map((project, index) => (
+            <Card key={index}> 
+              <project.Cube />
+            </Card>
+          ))}
+        </Box>
+        
       </Box>
     </FullScreenSection>
   );

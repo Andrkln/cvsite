@@ -15,11 +15,11 @@ const LandingSection = () => (
     flexGrow='2'
   >
       <Heading as='h1' size='4xl'
-      mb={7}
+      mt={10}
       >
             Web Developer
       </Heading>
-      <Self 
+      <Self
         title='Andrey'
         description='I have experience in various range of fields: Python, Django, SQL, Chatbots and many others'
         imageSrc={imgSrc}

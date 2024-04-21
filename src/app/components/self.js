@@ -135,6 +135,7 @@ const AnimatedBox = styled(Box)`
 const Self = ({ title, description, imageSrc }) => {
     const divf = 
     <Box className='foo1' id="foo1"
+    mt={10}
     >
         <Box className='foo2' id="foo2"
         w={'90%'}
@@ -159,7 +160,6 @@ const Self = ({ title, description, imageSrc }) => {
     >
         <Box
         w={'35ch'}
-        height={'40ch'}
         >
             <AnimatedBox
             ><div className='foo0'>
@@ -174,7 +174,6 @@ const Self = ({ title, description, imageSrc }) => {
                     {title}
                 </Text>
                 <Text fontSize="2vh" fontWeight="bold"
-                h={20}
                sx={{
                         background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,215,1) 35%, rgba(0,212,255,1) 100%)',
                         WebkitBackgroundClip: 'text',
