@@ -14,7 +14,11 @@ const aleo = Aleo({
 
 const metadata = {
   title: "Andrey's CV",
-  description: "Here you can find all info about me or ask AI about it",
+  description: `Explore my comprehensive collection of work, skills, and knowledge. Here, you'll find detailed information about my expertise in front-end development, my work experience, and more. If you have any questions, you can even ask an AI for assistance.
+
+  Take a look around to see examples of my projects and how my front-end skills can bring your ideas to life. Whether you're interested in web development, chatbot integration, or database solutions, I'm here to help.
+  
+  Let's connect and discuss how I can contribute to your next project.`,
   content: "width=device-width, initial-scale=1.0",
   image: "/images/my_photo.jpg"
 };
