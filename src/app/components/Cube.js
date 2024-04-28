@@ -50,15 +50,21 @@ const CubeFace = ({ color, width, height, font, transform, text, TypeText, image
     const isDragging = useRef(false);
     const startPos = useRef({ x: 0, y: 0 });
   
-    const handleMouseDown = (e) => {
+    // Handle mouse down and touch start events
+    const handleStart = (e) => {
       isDragging.current = true;
-      startPos.current = { x: e.clientX, y: e.clientY };
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      startPos.current = { x: clientX, y: clientY };
     };
   
-    const handleMouseMove = (e) => {
+    // Handle mouse move and touch move events
+    const handleMove = (e) => {
       if (isDragging.current) {
-        const deltaX = e.clientX - startPos.current.x;
-        const deltaY = e.clientY - startPos.current.y;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const deltaX = clientX - startPos.current.x;
+        const deltaY = clientY - startPos.current.y;
   
         setRotation({
           rotateX: rotation.rotateX - deltaY / 150,
@@ -67,16 +73,20 @@ const CubeFace = ({ color, width, height, font, transform, text, TypeText, image
       }
     };
   
-    const handleMouseUp = () => {
-      isDragging.current = false; 
+    // Handle mouse up, touch end, and touch cancel events
+    const handleEnd = () => {
+      isDragging.current = false;
     };
   
     return (
       <HStack
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
+        onMouseDown={handleStart}
+        onMouseMove={handleMove}
+        onMouseUp={handleEnd}
+        onMouseLeave={handleEnd}
+        onTouchStart={handleStart}
+        onTouchMove={handleMove}
+        onTouchEnd={handleEnd}
       >
         <Box
           sx={{
@@ -85,7 +95,7 @@ const CubeFace = ({ color, width, height, font, transform, text, TypeText, image
             height: '280px',
             transformStyle: 'preserve-3d',
             transform: `rotateX(${rotation.rotateX}deg) rotateY(${rotation.rotateY}deg)`,
-            transition: 'transform 0.1s linear', // Smooth transition
+            transition: 'transform 0.1s linear',
           }}
           className="Cube"
         >

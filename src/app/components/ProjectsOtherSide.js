@@ -21,11 +21,13 @@ const ProjectsOtherSide = () => {
     <Box
       className="QualityBox"
       transform="rotateX(0deg) rotateY(180deg) !important"
-      padding="10rem"
+      padding="5rem"
       display="grid"
+      rowGap={10}
       gridTemplateColumns={["repeat(1, minmax(0, 1fr))", "repeat(3, minmax(0, 1fr))"]}
       justifyItems={'space-around'}
       w={'75vw'}
+      mr={170}
     >
       {Object.keys(Qualities).map((key, index) => (
         <QualityBox
