@@ -53,21 +53,8 @@ const cornerAnimation = keyframes`
     }
 `;
 
-const changeAnimation = keyframes`
-    0%, 2.44% {
-        width: 37ch;
-        height:  37vh;
-    }
-
-    2.45%, 100% {
-        width: 38ch;
-        height:  38ch;
-    }
-`
-
 const selfCss = css`
     .foo0 {
-        animation: ${changeAnimation} 20s infinite linear 15s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
         width: 38ch;
@@ -135,7 +122,6 @@ const AnimatedBox = styled(Box)`
 const Self = ({ title, description, imageSrc }) => {
     const divf = 
     <Box className='foo1' id="foo1"
-    mt={10}
     >
         <Box className='foo2' id="foo2"
         w={'90%'}
@@ -158,6 +144,7 @@ const Self = ({ title, description, imageSrc }) => {
     </Box>
     return (
     <VStack spacing={4} className="me-slot"
+    maxHeight={80}
     >
         <Box
         w={'35ch'}

@@ -7,6 +7,8 @@ import React from "react";
 const Card = ({ title, children }) => {
   return (
     <Box
+      className="flipBox"
+      minWidth={20}
       sx={{
         height: '500px',
         display: "flex",

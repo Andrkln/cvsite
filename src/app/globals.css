@@ -57,6 +57,10 @@ body {
   margin-top: 20px;
 }
 
+.arrow {
+  transform: rotate(180deg);
+}
+
 @keyframes rotate {
   100% {
     transform: rotate(1turn);
@@ -64,6 +68,25 @@ body {
 }
 
 @media only screen and (max-width: 900px) {
+  .QualityBox{
+   display: flex !important;
+   flex-direction: column !important;
+   justify-content: space-around !important;
+   align-items: flex-start !important;
+   margin-right: 10% !important;
+   height: 250ch  !important;
+   padding: 0 !important;
+  }
+
+  .Quality{
+    margin-right: 2000px;
+  }
+
+  .flipBox {
+    width: 85vw;
+    align-items: flex-start !important;
+    overflow: visible;
+  }
 
   .bx {
     width: 80vw;
@@ -77,6 +100,16 @@ body {
   .projects {
     display: flex;
     flex-direction: column;
+  }
+
+
+}
+
+@media only screen and (max-width: 670px) {
+  .foo0 {
+    width: 32ch !important;
+    height: 32ch !important;
+    margin-left: 7%;
   }
 
 
