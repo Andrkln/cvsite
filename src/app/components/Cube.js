@@ -16,7 +16,7 @@ const Styles = ({ color, width, height, font, transform }) => ({
   justifyContent: 'center',
   fontSize: font,
   transform,
-  userSelect: 'none', // Prevent text selection
+  userSelect: 'none',
 });
 
 const CubeFace = ({ color, width, height, font, transform, text, TypeText, imageUrl, speed, textColour }) => (
@@ -60,7 +60,7 @@ const Cube = ({ faces }) => {
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     startPos.current = { x: clientX, y: clientY };
-    e.preventDefault(); // Prevent any default behavior like touch scroll
+    e.preventDefault();
   };
 
   const handleMove = (e) => {
@@ -74,7 +74,7 @@ const Cube = ({ faces }) => {
         rotateX: rotation.rotateX - deltaY / 150,
         rotateY: rotation.rotateY + deltaX / 150,
       });
-      e.preventDefault(); // Also prevent default here to stop any scrolling while moving
+      e.preventDefault();
     }
   };
 
