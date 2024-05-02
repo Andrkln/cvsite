@@ -122,6 +122,7 @@ const AnimatedBox = styled(Box)`
 const Self = ({ title, description, imageSrc }) => {
     const divf = 
     <Box className='foo1' id="foo1"
+    mt={20}
     >
         <Box className='foo2' id="foo2"
         w={'90%'}
@@ -144,7 +145,7 @@ const Self = ({ title, description, imageSrc }) => {
     </Box>
     return (
     <VStack spacing={4} className="me-slot"
-    maxHeight={80}
+    pb={100}
     >
         <Box
         w={'35ch'}
@@ -157,6 +158,7 @@ const Self = ({ title, description, imageSrc }) => {
         </Box>
           <VStack spacing={3}
           w={80}
+          h={100}
           >
                 <Text fontSize="2.8vh" fontWeight="bold">
                     {title}
@@ -171,6 +173,7 @@ const Self = ({ title, description, imageSrc }) => {
                 >       Shortly about Me: 
                     <TypingEffect text={` ${description}`} speed={90} />
                 </Text>
+                <br></br>
           </VStack>
       </VStack>
     );

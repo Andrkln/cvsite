@@ -66,8 +66,30 @@ body {
     transform: rotate(1turn);
   }
 }
+.introH{
+  margin-top: 100px !important;
+  display: none !important;
+}
+
+.place{
+  height: 20ch;
+}
 
 @media only screen and (max-width: 900px) {
+
+  .section-links::before {
+    padding-left: -30px;
+    margin-left: -2.5%;
+    margin-top: 1vh;
+  }
+  
+  .place{
+    height: 10ch !important; 
+  }
+  .introH{
+    width: 20;
+  }
+
   .QualityBox{
    display: flex !important;
    flex-direction: column !important;
