@@ -18,11 +18,6 @@ body {
   height: 95%;
 }
 
-
-.chat {
-  transition: "opacity 3s ease-in-out",
-}
-
 .section-links {
   padding-left: 5px;
   padding-right: 5px;
@@ -124,6 +119,14 @@ body {
     flex-direction: column;
   }
 
+  .flipBox{
+    width: 80vw !important;
+  }
+
+  .flipBox{
+    width: 80vw !important;
+  }
+
 
 }
 
@@ -132,6 +135,7 @@ body {
     width: 32ch !important;
     height: 32ch !important;
     margin-left: 7%;
+    color: linear-gradient(#cedcf7, rgb(252, 223, 94)), linear-gradient(#cedcf7, rgb(252, 223, 94)), linear-gradient(rgb(252, 223, 94), #d8e3f8), linear-gradient(rgb(252, 223, 94), #d8e3f8);
   }
 
 

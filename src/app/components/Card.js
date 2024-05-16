@@ -18,7 +18,7 @@ const Card = ({ title, children }) => {
         overflow: "hidden",
         padding: "5rem",
         alignItems: "",
-        ':before': {
+        ':hover:before': {
           content: '""', 
           position: "absolute",
           zIndex: -2,
@@ -30,7 +30,7 @@ const Card = ({ title, children }) => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "50% 50%",
           backgroundPosition: "0 0, 100% 0, 100% 100%, 0 100%",
-          backgroundImage: "linear-gradient(#cedcf7, #1867fa), linear-gradient(#cedcf7, #1867fa), linear-gradient(rgb(158, 245, 44), #d8e3f8), linear-gradient(rgb(158, 245, 44), #d8e3f8)",
+          backgroundImage: "linear-gradient(#cedcf7, #1867fa), linear-gradient(#cedcf7, #1867fa), linear-gradient(rgb(252, 223, 94), #d8e3f8), linear-gradient(rgb(252, 223, 94), #d8e3f8)",
           animation: "rotate 4s linear infinite",
         },
         ':after': {
