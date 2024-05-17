@@ -2,8 +2,6 @@
 import { Heading, VStack, Box } from "@chakra-ui/react";
 import React from "react";
 
-
-
 const Card = ({ title, children }) => {
   return (
     <Box
@@ -17,24 +15,23 @@ const Card = ({ title, children }) => {
         borderRadius: "10px",
         overflow: "hidden",
         padding: "5rem",
-        alignItems: "",
-        ':hover:before': {
-          content: '""', 
+        ':before': {
+          content: '""',
           position: "absolute",
           zIndex: -2,
           left: "-50%",
           top: "-50%",
           width: "200%",
           height: "200%",
-          backgroundColor: "#377af5",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "50% 50%",
-          backgroundPosition: "0 0, 100% 0, 100% 100%, 0 100%",
-          backgroundImage: "linear-gradient(#cedcf7, #1867fa), linear-gradient(#cedcf7, #1867fa), linear-gradient(rgb(252, 223, 94), #d8e3f8), linear-gradient(rgb(252, 223, 94), #d8e3f8)",
-          animation: "rotate 4s linear infinite",
+          background: "linear-gradient(45deg, #cedcf7, #1867fa, rgb(252, 223, 94), #d8e3f8)",
+          backgroundSize: "200% 200%",
+        },
+        ':hover:before': {
+          animationPlayState: "running",
+          animation: "rotate 2.5s linear infinite",
         },
         ':after': {
-          content: '""', 
+          content: '""',
           position: "absolute",
           zIndex: -1,
           left: "6px",
@@ -47,8 +44,7 @@ const Card = ({ title, children }) => {
       }}
     >
       <VStack>
-        <Heading fontSize="xl" fontWeight="bold" colour='black'
-        >
+        <Heading fontSize="xl" fontWeight="bold" color='black'>
           {title}
           {children}
         </Heading>

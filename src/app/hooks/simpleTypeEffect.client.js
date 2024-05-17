@@ -3,9 +3,13 @@ import { useState, useEffect } from 'react';
 
 const SimpleTypingEffect = ({ text, speed = 200 }) => {
     const [subText, setSubText] = useState('');
+    const [isTypingComplete, setIsTypingComplete] = useState(false);
 
     useEffect(() => {
-        if (subText === text) return;
+        if (subText === text) {
+            setIsTypingComplete(true);
+            return;
+        }
 
         const nextStepLength = subText.length < text.length ? subText.length + 1 : text.length;
         
@@ -16,7 +20,7 @@ const SimpleTypingEffect = ({ text, speed = 200 }) => {
         return () => clearTimeout(timer);
     }, [subText, speed, text]);
 
-    return <span>{subText}|</span>;
+    return <span>{subText}{!isTypingComplete && '|'}</span>;
 };
 
 export default SimpleTypingEffect;
