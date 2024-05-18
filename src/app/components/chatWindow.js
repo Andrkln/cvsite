@@ -11,6 +11,7 @@ const ChatPlace = () => {
     const [responses, setResponses] = useState({});
     const [showChatWindow, setShowChatWindow] = useState(false);
     const ismobile = useismobile();
+    const [ids, setIds] = useState([]);
     const pd = ismobile ? `3%` : `0.5%`;
     
     const toggleChatWindow = () => setShowChatWindow(!showChatWindow);
@@ -22,12 +23,12 @@ const ChatPlace = () => {
                   if (prevResponses[id]) {
                       return {
                           ...prevResponses,
-                          [id]: prevResponses[id] + message,
+                          [id]: prevResponses[id] + message
                       };
                   } else {
                       return {
                           ...prevResponses,
-                          [id]: message,
+                          [id]: message
                       };
                   }
               });
@@ -91,11 +92,14 @@ const ChatPlace = () => {
                         w={'20ch'}
                         mb={5}
                         minHeight={'20px'}
-                      > <SimpleTypingEffect 
-                        text={response}
-                        speed={60}
-                      
-                      />
+                      > 
+                        <SimpleTypingEffect 
+                            text={response}
+                            speed={60}
+                            id={id}
+                            ids={ids}
+                            
+                        />
                       </Box>
                     ))
                   }
