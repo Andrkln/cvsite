@@ -54,62 +54,55 @@ const cornerAnimation = keyframes`
 `;
 
 const selfCss = css`
-    .foo0 {
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        width: 38ch;
-        height:  38ch;
-    }
+  .foo0 {
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    width: 38ch;
+    height: 38ch;
+  }
 
-    .foo1 {
-        content:'';
-        position: static;
-        width: 90%;
-        height:  90%;
-        z-index: 2;
-        background-color:lightseagreen;
-        animation: ${cornerAnimation} 3.1s;
-        border-radius: 50%;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 5px 5px 5px 5px white;
-    }
+  .foo1 {
+    content: '';
+    position: static;
+    width: 90%;
+    height: 90%;
+    z-index: 2;
+    background-color: lightseagreen;
+    animation: ${cornerAnimation} 3.1s ease-in-out infinite;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 5px 5px white;
+  }
 
-    .foo2 {
-        content:'';
-        position: static;
-        width: 90%;
-        height:  90%;
-        z-index: 2;
-        background-color:blue;
-        animation: ${cornerAnimation} 3.2s;
-        border-radius: 50%;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .foo2 {
+    content: '';
+    position: static;
+    width: 90%;
+    height: 90%;
+    z-index: 2;
+    background-color: blue;
+    animation: ${cornerAnimation} 3.2s ease-in-out infinite;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .foo3 {
-        content:'';
-        position: static;
-        width: 90%;
-        height:  90%;
-        z-index: 2;
-        background-color:red;
-        animation: ${cornerAnimation} 3.3s;
-        border-radius: 50%;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
+  .foo3 {
+    content: '';
+    position: static;
+    width: 90%;
+    height: 90%;
+    z-index: 2;
+    background-color: red;
+    animation: ${cornerAnimation} 3.3s ease-in-out infinite;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
     
 const AnimatedBox = styled(Box)`
