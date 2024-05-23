@@ -1,6 +1,5 @@
 import rest from "@/app/hooks/key_store";
 
-
 export default async function handlerChat(req, res) {
     let body = { 
         ...req.body,
@@ -8,7 +7,7 @@ export default async function handlerChat(req, res) {
     };
     if (req.method === 'POST') {
         try {
-            const fetchResponse = await fetch('https://restgpt.herokuapp.com/api/chat/', {
+            const fetchResponse = await fetch('https://3.94.190.214:8000/api/chat/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
