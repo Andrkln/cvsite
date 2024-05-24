@@ -34,7 +34,6 @@ const useChating = () => {
                 
                 const preChunkStr = decoder.decode(value);
                 const preChunks = preChunkStr.split('\n');
-                console.log(preChunks)
                 let sentence = ''
                 
                 for (let preChunk of preChunks) {
@@ -42,45 +41,22 @@ const useChating = () => {
 
                     try {
                         const chunk = JSON.parse(preChunk);
-
-                        if (chunk.split('{').length > 2) {
-                            console.log('hbrthrwt');
-                            
-                            let new_chunk = chunk.split('{').slice(1);
-                        
-                            for (let i = 0; i < new_chunk.length; i++) {
-                                let first_chunk = JSON.parse('{' + new_chunk[i]);
-                                
-                                if (first_chunk.chat_id) {
-                                    setChatId(first_chunk.chat_id);
-                                }
-                        
-                                if (first_chunk.id && first_chunk.message) {
-                                    sentence += first_chunk.message; 
-                        
-                                    setResponses(
-                                        {
-                                            [first_chunk.id]: sentence
-                                        }
-                                    );
-                                }
-                            }
-                        } else {
-                            if (chunk.chat_id) {
+                        switch (true) {
+                            case Boolean(chunk.chat_id):
                                 setChatId(chunk.chat_id);
-                            }
+                                break;
                         
-                            if (chunk.id && chunk.message) {
-                                sentence += chunk.message;
+                            case Boolean(chunk.id && chunk.message):
+                                sentence += chunk.message; 
                         
-                                setResponses(
-                                    {
-                                        [chunk.id]: sentence
-                                    }
-                                );
-                            }
+                                setResponses({
+                                    [chunk.id]: sentence
+                                });
+                                break;
+                        
+                            default:
+                                break;
                         }
-                        
                         
                     } catch (error) {
                         console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
