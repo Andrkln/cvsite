@@ -8,7 +8,7 @@ export default async function handlerChat(req, res) {
     
     if (req.method === 'POST') {
         try {
-            const fetchResponse = await fetch('http:/restgpt-cfbbd06a935f.herokuapp.com/api/chat/', {
+            const fetchResponse = await fetch('http://restgpt-cfbbd06a935f.herokuapp.com/api/chat/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,6 +29,7 @@ export default async function handlerChat(req, res) {
                         res.end();
                         return;
                     }
+                    console.log(new TextDecoder("utf-8").decode(value))
                     res.write(new TextDecoder("utf-8").decode(value));
                 }
             }
