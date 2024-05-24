@@ -5,6 +5,7 @@ export default async function handlerChat(req, res) {
         ...req.body,
         rest 
     };
+    
     if (req.method === 'POST') {
         try {
             const fetchResponse = await fetch('http:/restgpt-cfbbd06a935f.herokuapp.com/api/chat/', {
