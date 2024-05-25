@@ -49,10 +49,11 @@ const useChating = () => {
                         if (chunk.id && chunk.message) {
                             sentence += chunk.message;
 
-                            setResponses(responses => ({
-                                ...responses,
-                                [chunk.id]: sentence
-                            }));
+                            setResponses(
+                                {
+                                    [chunk.id]: sentence
+                                }
+                              );
                         }
                     } catch (error) {
                         console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
@@ -69,9 +70,11 @@ const useChating = () => {
                     if (chunk.id && chunk.message) {
                         sentence += chunk.message;
 
-                        setResponses(responses => ({
-                            [chunk.id]: sentence
-                        }));
+                        setResponses(
+                            {
+                                [chunk.id]: sentence
+                            }
+                          );
                     }
                 } catch (error) {
                     console.error("Error parsing remaining chunk to JSON", error, "Chunk was:", incompleteChunk);
