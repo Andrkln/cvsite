@@ -27,15 +27,17 @@ const useChating = () => {
 
             const reader = fetchResponse.body.getReader();
             const decoder = new TextDecoder();
+            let incompleteChunk = '';
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
                 
                 const preChunkStr = decoder.decode(value);
-                const preChunks = preChunkStr.split('\n');
-                let sentence = ''
-                
+                const preChunks = (incompleteChunk + preChunkStr).split('\n');
+                incompleteChunk = preChunks.pop(); // Save the last chunk which might be incomplete
+                let sentence = '';
+
                 for (let preChunk of preChunks) {
                     if (!preChunk.trim()) continue;
 
@@ -45,18 +47,36 @@ const useChating = () => {
                             setChatId(chunk.chat_id);
                         }
                         if (chunk.id && chunk.message) {
-                            sentence += chunk.message
+                            sentence += chunk.message;
 
-                            setResponses(
-                                {
-                                    [chunk.id]: sentence
-                                }
-                              );
+                            setResponses(prevResponses => ({
+                                ...prevResponses,
+                                [chunk.id]: sentence
+                            }));
                         }
-                        
                     } catch (error) {
-                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunks);
+                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
                     }
+                }
+            }
+
+            // Process the remaining incomplete chunk if any
+            if (incompleteChunk) {
+                try {
+                    const chunk = JSON.parse(incompleteChunk);
+                    if (chunk.chat_id) {
+                        setChatId(chunk.chat_id);
+                    }
+                    if (chunk.id && chunk.message) {
+                        sentence += chunk.message;
+
+                        setResponses(prevResponses => ({
+                            ...prevResponses,
+                            [chunk.id]: sentence
+                        }));
+                    }
+                } catch (error) {
+                    console.error("Error parsing remaining chunk to JSON", error, "Chunk was:", incompleteChunk);
                 }
             }
 
