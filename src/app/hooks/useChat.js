@@ -32,8 +32,8 @@ const useChating = () => {
                 const { done, value } = await reader.read();
                 if (done) break;
                 
-                const preChunkStr = decoder.decode(value);
-                console.log(preChunkStrm,'\n')
+                const preChunkStrm = decoder.decode(value);
+                console.log(preChunkStrm, '\n')
                 const preChunks = preChunkStr.split('\n');
                 console.log(preChunks)
                 let sentence = ''
