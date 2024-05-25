@@ -55,7 +55,7 @@ const useChating = () => {
                         }
                         
                     } catch (error) {
-                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
+                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunkStrm);
                     }
                 }
             }
