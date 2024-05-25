@@ -37,12 +37,12 @@ const useChating = () => {
                 const preChunks = preChunkStr.split('\n');
                 let sentence = ''
 
-                console.log(preChunkStrm)
                 
                 for (let preChunk of preChunks) {
                     if (!preChunk.trim()) continue;
 
                     try {
+                        console.log(preChunkStrm)
                         const chunk = JSON.parse(preChunk);
                         if (chunk.chat_id) {
                             setChatId(chunk.chat_id);
