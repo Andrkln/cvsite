@@ -33,7 +33,7 @@ const useChating = () => {
                 if (done) break;
                 
                 const preChunkStrm = decoder.decode(value);
-                const preChunks = preChunkStr.split('');
+                const preChunks = preChunkStr.split('\n');
                 let sentence = ''
                 
                 for (let preChunk of preChunks) {
