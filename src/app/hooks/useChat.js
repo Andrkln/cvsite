@@ -31,10 +31,13 @@ const useChating = () => {
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
+
                 
                 const preChunkStrm = decoder.decode(value);
                 const preChunks = preChunkStr.split('\n');
                 let sentence = ''
+
+                console.log(preChunkStrm)
                 
                 for (let preChunk of preChunks) {
                     if (!preChunk.trim()) continue;
@@ -55,7 +58,7 @@ const useChating = () => {
                         }
                         
                     } catch (error) {
-                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunkStrm);
+                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
                     }
                 }
             }
