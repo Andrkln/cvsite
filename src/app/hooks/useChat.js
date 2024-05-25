@@ -42,7 +42,7 @@ const useChating = () => {
                     if (!preChunk.trim()) continue;
 
                     try {
-                        console.log(preChunkStr)
+                        console.log(preChunks)
                         const chunk = JSON.parse(preChunk);
                         if (chunk.chat_id) {
                             setChatId(chunk.chat_id);
