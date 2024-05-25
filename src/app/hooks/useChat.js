@@ -35,7 +35,7 @@ const useChating = () => {
                 
                 const preChunkStr = decoder.decode(value);
                 const preChunks = (incompleteChunk + preChunkStr).split('\n');
-                incompleteChunk = preChunks.pop(); // Save the last chunk which might be incomplete
+                incompleteChunk = preChunks.pop();
                 let sentence = '';
 
                 for (let preChunk of preChunks) {
@@ -49,8 +49,8 @@ const useChating = () => {
                         if (chunk.id && chunk.message) {
                             sentence += chunk.message;
 
-                            setResponses(prevResponses => ({
-                                ...prevResponses,
+                            setResponses(responses => ({
+                                ...responses,
                                 [chunk.id]: sentence
                             }));
                         }
@@ -60,7 +60,6 @@ const useChating = () => {
                 }
             }
 
-            // Process the remaining incomplete chunk if any
             if (incompleteChunk) {
                 try {
                     const chunk = JSON.parse(incompleteChunk);
@@ -70,8 +69,7 @@ const useChating = () => {
                     if (chunk.id && chunk.message) {
                         sentence += chunk.message;
 
-                        setResponses(prevResponses => ({
-                            ...prevResponses,
+                        setResponses(responses => ({
                             [chunk.id]: sentence
                         }));
                     }
