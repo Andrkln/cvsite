@@ -55,7 +55,6 @@ const cornerAnimation = keyframes`
 
 const selfCss = css`
   .foo0 {
-    animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     width: 38ch;
     height: 38ch;
