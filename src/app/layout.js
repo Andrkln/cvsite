@@ -35,6 +35,8 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="https://pcgdragoncrestgames.s3.ca-central-1.amazonaws.com/game-header-images/f01850f2-d8b2-4a21-85c5-7cb361f698b2Tyranny-min.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="The Brink Game Title Image" />
       </head>
       <body className={aleo.className}>
         <Header />
