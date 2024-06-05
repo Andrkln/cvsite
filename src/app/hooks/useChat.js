@@ -1,11 +1,10 @@
-'use client';
 import { useState } from 'react';
 
 const useChating = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [response, setResponses] = useState({});
     const [error, setError] = useState(null);
-    const [chatId, setChatId] = useState(null);
+    const [chat_id, setChatId] = useState(null);
 
     const submitChat = async (ChatData) => {
         setIsLoading(true);
@@ -49,11 +48,9 @@ const useChating = () => {
                         if (chunk.id && chunk.message) {
                             sentence += chunk.message;
 
-                            setResponses(
-                                {
-                                    [chunk.id]: sentence
-                                }
-                              );
+                            setResponses({
+                                [chunk.id]: sentence
+                            });
                         }
                     } catch (error) {
                         console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
@@ -70,11 +67,9 @@ const useChating = () => {
                     if (chunk.id && chunk.message) {
                         sentence += chunk.message;
 
-                        setResponses(
-                            {
-                                [chunk.id]: sentence
-                            }
-                          );
+                        setResponses({
+                            [chunk.id]: sentence
+                        });
                     }
                 } catch (error) {
                     console.error("Error parsing remaining chunk to JSON", error, "Chunk was:", incompleteChunk);
@@ -89,7 +84,7 @@ const useChating = () => {
         }
     };
 
-    return { isLoading, response, error, chatId, submit: submitChat };
+    return { isLoading, response, error, chat_id, submit: submitChat };
 };
 
 export default useChating;
