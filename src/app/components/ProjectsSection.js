@@ -151,11 +151,9 @@ const ProjectsSection = () => {
         display={'flex'}
         alignContent={['flex-start','center']}
         justifyContent={['flex-start','center']}
-        bg='blue'
         w={'80vw'}
         mt={20}
           > <Box
-          bg='red'
           display={'flex'}
           alignContent={'flex-start'}
           justifyContent={'flex-start'}
