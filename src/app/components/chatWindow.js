@@ -93,13 +93,7 @@ const ChatPlace = () => {
                         mb={5}
                         minHeight={'20px'}
                       > 
-                        <SimpleTypingEffect 
-                            text={response}
-                            speed={60}
-                            id={id}
-                            ids={ids}
-                            
-                        />
+                          {response}
                       </Box>
                     ))
                   }
