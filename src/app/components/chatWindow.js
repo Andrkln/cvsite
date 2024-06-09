@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import useChating from "../hooks/useChat";
 import { Box, Button, Textarea, VStack, Slide } from "@chakra-ui/react";
 import useismobile from "../hooks/isMobile";
-import SimpleTypingEffect from "../hooks/simpleTypeEffect.client";
 
 const ChatPlace = () => {
     const { isLoading, response, error, chat_id ,submit } = useChating();
