@@ -70,7 +70,16 @@ body {
   height: 20ch;
 }
 
+.flipBox2{  
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
 @media only screen and (max-width: 900px) {
+
+  .flipBox2{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 
   .section-links::before {
     padding-left: -30px;
@@ -100,7 +109,7 @@ body {
   }
 
   .flipBox {
-    width: 85vw;
+    width: 80vw !important;
     align-items: flex-start !important;
     overflow: visible;
   }
@@ -118,15 +127,6 @@ body {
     display: flex;
     flex-direction: column;
   }
-
-  .flipBox{
-    width: 80vw !important;
-  }
-
-  .flipBox{
-    width: 80vw !important;
-  }
-
 
 }
 

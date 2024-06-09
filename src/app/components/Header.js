@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <Box
-      height="40px"
+      height="4.5ch"
       position="fixed"
       top={0}
       left={0}
@@ -49,7 +49,7 @@ const Header = () => {
       backgroundColor="#18181b"
       zIndex="10"
     >
-      <Box color="white" maxWidth="100%" m="0 auto" px={16} py={10}
+      <Box color="white" maxWidth="100%" px={15} py={10}
         >
         <HStack justifyContent="space-between" 
         >

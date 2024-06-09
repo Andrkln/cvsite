@@ -52,8 +52,8 @@ const QualityBox = ({ HeadText, SmallText, BigColor, SmallColor }) => {
         borderRadius={'100%'}
         borderColor={BigColor}
         borderWidth={5}
-        w={350}
-        h={350}
+        w={290}
+        h={290}
         sx={{
           animation: `${borderAnimation} 5s infinite ease-in-out`,
         }}

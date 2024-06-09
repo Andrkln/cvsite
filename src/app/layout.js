@@ -2,7 +2,6 @@ import { Aleo } from 'next/font/google'
 import "./globals.css";
 import Header from './components/Header';
 import Head from 'next/head';
-import Footer from './components/Footer';
 
 const aleo = Aleo({
   weight: '300',
@@ -43,7 +42,6 @@ export default function RootLayout({ children }) {
         <meta property="og:type" content="website" />
         <Header/>
           {children}
-        <Footer/>
       </body>
     </html>
   );

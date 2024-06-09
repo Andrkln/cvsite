@@ -35,13 +35,13 @@ const imgSrc = "/images/arrow.png";
 
 const Map = 
   <Box
-  w={'50vw'}
+    className="flipBox2"
+    w={'50vw'}
     bgColor={'white'}
     backgroundColor={'white'}
-      display="grid"
-      gap="20px"
-      gridTemplateColumns={["repeat(1, minmax(0, 1fr))", "repeat(2, minmax(0, 1fr))"]}
-      justifyItems={'space-around'}
+    display="grid"
+    gap="20px"
+    justifyItems={'space-around'}
     >
     {projects.map((project, index) => (
         <Card key={index}> 
@@ -55,7 +55,7 @@ const ProjectsSection = () => {
 
   const [colors, setColors] = useState({ project: 'black', qualities: 'grey' });
   const [turn, setTurn] = useState('0')
-  const [turnMargin, SetTurnMargin] = useState('0')
+  const [widthOF, SetwidthOF] = useState('0')
   const  [Content, setContent] = useState(Map)
 
   function handleColorChange() {
@@ -70,7 +70,7 @@ const ProjectsSection = () => {
 
         if (Math.abs(nextTurn) === 90) { 
           setContent(Content === Map ? <ProjectsOtherSide /> : Map);
-          SetTurnMargin(Content === Map ? '12' : '0');
+          
 
         }
   
@@ -148,13 +148,17 @@ const ProjectsSection = () => {
             </Box>
         </Box>
         <Box
-        className="flipBox"
-        mr={`${turnMargin}ch`}
+        display={'flex'}
+        alignContent={['flex-start','center']}
+        justifyContent={['flex-start','center']}
+        bg='blue'
+        w={'80vw'}
         mt={20}
           > <Box
-              display={'flex'}
-              alignItems={'center'}
-              justifyItems={'center'}
+          bg='red'
+          display={'flex'}
+          alignContent={'flex-start'}
+          justifyContent={'flex-start'}
               sx={{
                 transform: `rotateX(0deg) rotateY(${turn}deg)`,
               }}

@@ -39,8 +39,8 @@ let img29 = "/images/typeeffect.webp";
 
 export const Cube1 = () => {
 const ismobile = useismobile();
-  const width = ismobile ? `30ch` : `300px`;
-  const z = ismobile ? `15ch` : `16.2ch`;
+  const width = ismobile ? `30ch` : `30ch`;
+  const z = ismobile ? `15ch` : `15ch`;
     const cubeFaces = [
       { color: `green`, width: width, height: width, font: `16px`, transform: `rotateY(0deg) translateZ(${z})`, 
       text: `kuzet-standart.kz was my 1st real project`,
@@ -81,8 +81,8 @@ const ismobile = useismobile();
 
 export const Cube2 = () => {
 const ismobile = useismobile();
-const width = ismobile ? `30ch` : `300px`;
-const z = ismobile ? `15ch` : `16.2ch`;
+const width = ismobile ? `30ch` : `30ch`;
+const z = ismobile ? `15ch` : `15ch`;
 const cubeFaces = [
     { color: `lightblue`,width: width, height: width, font: `16px`, transform: `rotateY(0deg) translateZ(${z})`,
     text: `A telegram bot, my personal helper`, 
@@ -122,8 +122,8 @@ return <Cube faces={cubeFaces} />;
 
 export const Cube3 = () => {
 const ismobile = useismobile();
-  const width = ismobile ? `30ch` : `300px`;
-  const z = ismobile ? `15ch` : `16.2ch`;
+const width = ismobile ? `30ch` : `30ch`;
+const z = ismobile ? `15ch` : `15ch`;
 const cubeFaces = [
     { color: `rgb(21, 129, 66)`,width: width, height: width, font: `16px`, transform: `rotateY(0deg) translateZ(${z})`,
     text: `Google sheets as a database`, 
@@ -163,8 +163,8 @@ return <Cube faces={cubeFaces} />;
 
 export const Cube4 = () => {
 const ismobile = useismobile();
-  const width = ismobile ? `30ch` : `300px`;
-  const z = ismobile ? `15ch` : `16.2ch`;
+const width = ismobile ? `30ch` : `30ch`;
+const z = ismobile ? `15ch` : `15ch`;
 const cubeFaces = [
     { color: `lightblue`,width: width, height: width, font: `16px`, transform: `rotateY(0deg) translateZ(${z})`,
     text: `Made many simple one page websites`, 
@@ -204,8 +204,8 @@ return <Cube faces={cubeFaces} />;
 
 export const Cube5 = () => {
 const ismobile = useismobile();
-  const width = ismobile ? `30ch` : `300px`;
-  const z = ismobile ? `15ch` : `16.2ch`;
+const width = ismobile ? `30ch` : `30ch`;
+const z = ismobile ? `15ch` : `15ch`;
 const cubeFaces = [
     { color: `rgb(0, 153, 255)`,width: width, height: width, font: `16px`, transform: `rotateY(0deg) translateZ(${z})`,
     text: `Telegram bot for customers`, 
@@ -245,8 +245,8 @@ return <Cube faces={cubeFaces} />;
 
 export const Cube6 = () => {
 const ismobile = useismobile();
-const width = ismobile ? `30ch` : `300px`;
-const z = ismobile ? `15ch` : `16.2ch`;
+const width = ismobile ? `30ch` : `30ch`;
+const z = ismobile ? `15ch` : `15ch`;
 const cubeFaces = [
     { color: `rgb(166, 255, 0)`,width: width, height: width, font: `16px`, transform: `rotateY(0deg) translateZ(${z})`,
     text: `This website developed with Next.js and Python`, 

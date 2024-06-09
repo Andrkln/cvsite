@@ -20,17 +20,16 @@ const Styles = ({ color, width, height, font, transform }) => ({
 });
 
 const CubeFace = ({ color, width, height, font, transform, text, TypeText, imageUrl, speed, textColour }) => (
-  <Box sx={Styles({ color, width, height, font, transform })}>
+  <Box sx={Styles({ color, width, height, font, transform })}
+  >
     <VStack>
       {imageUrl && (
         <Image
           src={imageUrl}
           alt="Cube Face"
-          className="CubeImage"
-          width="0"
-          height="0"
+          width="120"
+          height="120"
           sizes="100vw"
-          style={{ width: '50%', height: 'auto' }}
         />
       )}
       {text && <Text>{text}</Text>}
@@ -96,8 +95,8 @@ const Cube = ({ faces }) => {
       <Box
         sx={{
           position: 'relative',
-          width: '280px',
-          height: '280px',
+          width: '30ch',
+          height: '32ch',
           transformStyle: 'preserve-3d',
           transform: `rotateX(${rotation.rotateX}deg) rotateY(${rotation.rotateY}deg)`,
           transition: 'transform 0.1s linear',
