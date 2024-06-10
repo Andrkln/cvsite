@@ -71,7 +71,7 @@ const ChatPlace = () => {
         >
             {showChatWindow && (
               <VStack
-                backgroundColor="black"
+                backgroundColor="rgb(158, 131, 10)"
                 borderRadius="15px"
                 p={4}
                 spacing={4}
@@ -85,15 +85,16 @@ const ChatPlace = () => {
                       {
                         Object.entries(responses).map(([id, response]) => (
                           <Box
-                            backgroundColor={id.startsWith('user-') ? "lightblue" : "white"}
+                            backgroundColor={id.startsWith('user-') ? "rgb(48, 198, 248)" : "white"}
                             borderRadius="5px"
                             borderStyle="solid"
-                            borderWidth="1px"
-                            borderColor="gray.200"
-                            key={id} 
+                            borderWidth="2px"
+                            borderColor="black"
+                            key={id}
                             w={'20ch'}
                             mb={5}
                             minHeight={'20px'}
+                            p={1}
                           > 
                             {response}
                           </Box>
