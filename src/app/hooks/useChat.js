@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 
 const useChating = () => {
@@ -31,7 +30,6 @@ const useChating = () => {
 
             while (true) {
                 const { done, value } = await reader.read();
-                
                 if (done) break;
                 
                 const preChunkStr = decoder.decode(value);
@@ -43,7 +41,6 @@ const useChating = () => {
                     if (!preChunk.trim()) continue;
 
                     try {
-                        console.log(preChunk)
                         const chunk = JSON.parse(preChunk);
                         if (chunk.chat_id) {
                             setChatId(chunk.chat_id);

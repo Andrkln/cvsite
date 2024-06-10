@@ -14,6 +14,7 @@ const ChatPlace = () => {
     const pd = ismobile ? `3%` : `0.5%`;
     
     const toggleChatWindow = () => setShowChatWindow(!showChatWindow);
+    
     useEffect(() => {
       if (response && Object.keys(response).length > 0) {
           const [id, message] = Object.entries(response)[0];
@@ -33,13 +34,18 @@ const ChatPlace = () => {
               });
           }
       }
-  }, [response]);
-
-  
+    }, [response]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
         if (!message.trim()) return;
+
+        const userMessageId = `user-${Date.now()}`;
+        setResponses(prevResponses => ({
+            ...prevResponses,
+            [userMessageId]: message
+        }));
+
         await submit({ message, chat_id });
         setMessage("");
     };
@@ -74,28 +80,25 @@ const ChatPlace = () => {
                 borderColor={'blue'}
               >
                 <form onSubmit={handleSendMessage} style={{ width: "small" }}>
-                  <VStack spacing={5}
-                  >
-                    <Box h="120px" overflowY="auto"
-                      spacing={5}
-                    >
+                  <VStack spacing={5}>
+                    <Box h="120px" overflowY="auto" className="no-scrollbar">
                       {
-                  Object.entries(responses).map(([id, response], index) => (
-                      <Box
-                        backgroundColor="white"
-                        borderRadius="5px"
-                        borderStyle="solid"
-                        borderWidth="1px"
-                        borderColor="gray.200"
-                        key={id} 
-                        w={'20ch'}
-                        mb={5}
-                        minHeight={'20px'}
-                      > 
-                          {response}
-                      </Box>
-                    ))
-                  }
+                        Object.entries(responses).map(([id, response]) => (
+                          <Box
+                            backgroundColor={id.startsWith('user-') ? "lightblue" : "white"}
+                            borderRadius="5px"
+                            borderStyle="solid"
+                            borderWidth="1px"
+                            borderColor="gray.200"
+                            key={id} 
+                            w={'20ch'}
+                            mb={5}
+                            minHeight={'20px'}
+                          > 
+                            {response}
+                          </Box>
+                        ))
+                      }
                     </Box>
                     <Textarea
                       maxWidth={60}
@@ -132,5 +135,3 @@ const ChatPlace = () => {
 };
 
 export default ChatPlace;
-
-
