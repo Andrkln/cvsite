@@ -71,7 +71,7 @@ const ChatPlace = () => {
         >
             {showChatWindow && (
               <VStack
-                backgroundColor="rgb(158, 131, 10)"
+                backgroundColor="rgb(255, 214, 33)"
                 borderRadius="15px"
                 p={4}
                 spacing={4}
@@ -88,7 +88,7 @@ const ChatPlace = () => {
                             backgroundColor={id.startsWith('user-') ? "rgb(48, 198, 248)" : "white"}
                             borderRadius="5px"
                             borderStyle="solid"
-                            borderWidth="2px"
+                            borderWidth="1px"
                             borderColor="black"
                             key={id}
                             w={'20ch'}
@@ -107,19 +107,25 @@ const ChatPlace = () => {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       disabled={isLoading}
-                      color={'white'}
+                      color={'blue'}
+                      borderColor="black"
                       sx={{
                         '::placeholder': {
-                          color: 'white',
+                          color: 'blue',
                         },
                       }}
                     />
                     <Button
                       type="submit"
                       isLoading={isLoading}
-                      colorScheme="white"
                       borderStyle={'solid'}
                       borderWidth={2}
+                      color={'blue'}
+                      borderColor={'black'}
+                      bg={'rgb(252, 226, 114)'}
+                      _hover={{
+                        bg: "white",
+                      }}
                     >
                       Send
                     </Button>
