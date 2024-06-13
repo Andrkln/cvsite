@@ -29,53 +29,70 @@ const useChating = () => {
             const decoder = new TextDecoder();
             let incompleteChunk = '';
 
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                
-                const preChunkStr = decoder.decode(value);
-                const preChunks = (incompleteChunk + preChunkStr).split('\n');
-                incompleteChunk = preChunks.pop();
-                let sentence = '';
+            const customReadable = new ReadableStream({
+                start(controller) {
+                    function pump() {
+                        return reader.read().then(({ done, value }) => {
+                            if (done) {
+                                if (incompleteChunk) {
+                                    try {
+                                        const jsonChunk = JSON.parse(incompleteChunk);
+                                        if (jsonChunk.chat_id) {
+                                            setChatId(jsonChunk.chat_id);
+                                        }
+                                        if (jsonChunk.id && jsonChunk.message) {
 
-                for (let preChunk of preChunks) {
-                    if (!preChunk.trim()) continue;
+                                            setResponses({
 
-                    try {
-                        const chunk = JSON.parse(preChunk);
-                        if (chunk.chat_id) {
-                            setChatId(chunk.chat_id);
-                        }
-                        if (chunk.id && chunk.message) {
-                            sentence += chunk.message;
+                                                [jsonChunk.id]: jsonChunk.message
+                                                
+                                            });
+                                        }
+                                    } catch (error) {
+                                        console.error("Error parsing remaining chunk to JSON", error, "Chunk was:", incompleteChunk);
+                                    }
+                                }
+                                controller.close();
+                                return;
+                            }
 
-                            setResponses({
-                                [chunk.id]: sentence
-                            });
-                        }
-                    } catch (error) {
-                        console.error("Error parsing chunk to JSON", error, "Chunk was:", preChunk);
-                    }
-                }
-            }
+                            const chunkStr = decoder.decode(value);
+                            console.log(chunkStr)
+                            const chunks = chunkStr.split('\n');
+                            incompleteChunk = chunks.pop();
 
-            if (incompleteChunk) {
-                try {
-                    const chunk = JSON.parse(incompleteChunk);
-                    if (chunk.chat_id) {
-                        setChatId(chunk.chat_id);
-                    }
-                    if (chunk.id && chunk.message) {
-                        sentence += chunk.message;
+                            for (let chunk of chunks) {
+                                if (!chunk.trim()) continue;
 
-                        setResponses({
-                            [chunk.id]: sentence
+                                try {
+                                    const jsonChunk = JSON.parse(chunk);
+                                    if (jsonChunk.chat_id) {
+
+                                        setChatId(jsonChunk.chat_id);
+                                    }
+
+                                    if (jsonChunk.id && jsonChunk.message) {
+
+                                        setResponses({
+                                            [jsonChunk.id]: jsonChunk.message
+                                        });
+                                    }
+
+                                } catch (error) {
+                                    console.error("Error parsing chunk to JSON", error, "Chunk was:", chunk);
+                                }
+                            }
+
+                            controller.enqueue(value);
+                            return pump();
                         });
                     }
-                } catch (error) {
-                    console.error("Error parsing remaining chunk to JSON", error, "Chunk was:", incompleteChunk);
+
+                    return pump();
                 }
-            }
+            });
+
+            await new Response(customReadable).text();
 
         } catch (fetchError) {
             console.error('Error during fetch:', fetchError);
