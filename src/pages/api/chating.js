@@ -11,7 +11,7 @@ export default async function handlerChat(req, res) {
     };
     if (req.method === 'POST') {
         try {
-            const fetchResponse = await fetch('https://restgpt-cfbbd06a935f.herokuapp.com/api/chat/', {
+            const fetchResponse = await fetch('http://127.0.0.1:8000//api/chat/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export default async function handlerChat(req, res) {
                 }
             }
 
-            await push();
+                push();
         } catch (error) {
             console.error('Fetch error:', error);
             res.status(500).json({ error: `Internal server error: ${error.message}` });
