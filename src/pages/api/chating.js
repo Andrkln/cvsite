@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import rest from "@/app/hooks/key_store";
 
 'https://restgpt-cfbbd06a935f.herokuapp.com/api/chat/'
@@ -26,46 +25,24 @@ export default async function handlerChat(req, res) {
 
             const reader = fetchResponse.body.getReader();
 
-            const stream = new ReadableStream({
-                start(controller) {
-                    function push() {
-                        reader.read().then(({ done, value }) => {
-                            if (done) {
-                                controller.close();
-                                return;
-                            }
-                            controller.enqueue(value);
-                            push();
-                        }).catch(err => {
-                            console.error('Stream read error:', err);
-                            controller.error(err);
-                        });
-                    }
-                    push();
-                }
-            });
+            async function push() {
 
-            res.writeHead(200, {
-                'Content-Type': 'text/event-stream',
-                'Cache-Control': 'no-cache',
-                'Connection': 'keep-alive',
-            });
-
-            const readerStream = stream.getReader();
-
-            async function streamToResponse() {
-                const decoder = new TextDecoder("utf-8");
                 while (true) {
-                    const { done, value } = await readerStream.read();
+
+                    const { done, value } = await reader.read();
+
                     if (done) {
+
                         res.end();
-                        break;
+                        return;
+
                     }
-                    res.write(decoder.decode(value));
+
+                    res.write(value);
                 }
             }
 
-            await streamToResponse();
+            await push();
 
         } catch (error) {
             console.error('Fetch error:', error);
